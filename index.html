@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <Title> Taller Typescript1 </Title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        bref="data:,">
+    <style type="text/css">
+        #seriesTable {
+            margin-left: 15%;
+            margin-top: 2%;
+            border: 2px solid #000080; 
+        }
+
+        #average {
+            margin-left: 15%;
+            color: #000080; 
+        }
+
+        .table th {
+            background-color: #000080; 
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="container-12">
+        <div class="row-12" style="background-color: #000080;">
+            <h4 style="color: white;">TV series</h4>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <table class="table" id="seriesTabla">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Channel</th>
+                            <th scope="col">Seasons</th>
+                        </tr>
+                    </thead>
+                </table>
+                <p id="average"></p>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="./scripts/main.js"></script>
+</body>
+
+</html>
