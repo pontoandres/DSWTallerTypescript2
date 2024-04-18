@@ -11,13 +11,28 @@ var seriesTabla = document.getElementById("seriesTabla");
 mostrarDatosSeries(series);
 function mostrarDatosSeries(series) {
     var serieTbody = document.createElement("tbody");
+    var _loop_1 = function (serie) {
+        var trElement = document.createElement("tr");
+        trElement.innerHTML = "<td class=\"table-active\"> ".concat(serie.id, " </td> \n                               <td class=\"table-active\" style = \"color:blue\"> ").concat(serie.nombre, " </td>\n                               <td class=\"table-active\"> ").concat(serie.plataforma, " </td> \n                               <td class=\"table-active\"> ").concat(serie.temporadas, " </td>");
+        // Agregar evento de clic a la fila
+        trElement.addEventListener('click', function () {
+            mostrarDetalleSerie(serie);
+        });
+        serieTbody.appendChild(trElement);
+    };
     for (var _i = 0, series_1 = series; _i < series_1.length; _i++) {
         var serie = series_1[_i];
-        var trElement = document.createElement("tr");
-        trElement.innerHTML = "<td class=\"table-active\"> ".concat(serie.id, " </td> <td class=\"table-active\" style = \"color:blue\"> ").concat(serie.nombre, " </td>\n    <td class=\"table-active\"> ").concat(serie.plataforma, " </td> <td class=\"table-active\"> ").concat(serie.temporadas, " </td>");
-        serieTbody.appendChild(trElement);
+        _loop_1(serie);
     }
     seriesTabla.appendChild(serieTbody);
+}
+function mostrarDetalleSerie(serie) {
+    // Obtener el contenedor de la tarjeta
+    var serieDetalle = document.getElementById("serieDetalle");
+    // Limpiar el contenedor anterior
+    serieDetalle.innerHTML = "";
+    // Crear la tarjeta con Bootstrap
+    serieDetalle.innerHTML = "\n        <div class=\"card\">\n            <img class=\"card-img-top\" src=\"".concat(serie.imagen, "\" alt=\"").concat(serie.nombre, "\">\n            <div class=\"card-body\">\n                <h5 class=\"card-title\">").concat(serie.nombre, "</h5>\n                <p class=\"card-text\">").concat(serie.sinopsis, "</p>\n                <a href=\"").concat(serie.link, "\" class=\"btn btn-primary\">M\u00E1s informaci\u00F3n</a>\n            </div>\n        </div>\n    ");
 }
 var averageD = document.getElementById("average");
 mostrarPromedio(series);

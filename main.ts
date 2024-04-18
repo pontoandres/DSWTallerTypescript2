@@ -26,14 +26,42 @@ let seriesTabla: HTMLElement = document.getElementById("seriesTabla")! ;
 mostrarDatosSeries(series)
 
 function mostrarDatosSeries (series: Serie[]): void{
-    let serieTbody:HTMLElement = document.createElement("tbody");
-    for(let serie of series ){
-    let trElement:HTMLElement = document.createElement("tr");
-    trElement.innerHTML = `<td class="table-active"> ${serie.id} </td> <td class="table-active" style = "color:blue"> ${serie.nombre} </td>
-    <td class="table-active"> ${serie.plataforma} </td> <td class="table-active"> ${serie.temporadas} </td>`
-    serieTbody.appendChild(trElement);
+    let serieTbody: HTMLElement = document.createElement("tbody");
+    for (let serie of series) {
+        let trElement: HTMLElement = document.createElement("tr");
+        trElement.innerHTML = `<td class="table-active"> ${serie.id} </td> 
+                               <td class="table-active" style = "color:blue"> ${serie.nombre} </td>
+                               <td class="table-active"> ${serie.plataforma} </td> 
+                               <td class="table-active"> ${serie.temporadas} </td>`;
+        
+        // Agregar evento de clic a la fila
+        trElement.addEventListener('click', function() {
+            mostrarDetalleSerie(serie);
+        });
+
+        serieTbody.appendChild(trElement);
     }
     seriesTabla.appendChild(serieTbody);
+}
+
+function mostrarDetalleSerie(serie: Serie): void {
+    // Obtener el contenedor de la tarjeta
+    let serieDetalle: HTMLElement = document.getElementById("serieDetalle")!;
+
+    // Limpiar el contenedor anterior
+    serieDetalle.innerHTML = "";
+
+    // Crear la tarjeta con Bootstrap
+    serieDetalle.innerHTML = `
+        <div class="card">
+            <img class="card-img-top" src="${serie.imagen}" alt="${serie.nombre}">
+            <div class="card-body">
+                <h5 class="card-title">${serie.nombre}</h5>
+                <p class="card-text">${serie.sinopsis}</p>
+                <a href="${serie.link}" class="btn btn-primary">Más información</a>
+            </div>
+        </div>
+    `;
 }
 
 let averageD: HTMLElement = document.getElementById("average")! ; 
